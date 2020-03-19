@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Talk with me</title>
+    <style>
+      .speech-bubble {
+        position: relative;
+        background: #d1f8f7;
+        border-radius: .4em;
+        margin: 15px;
+        padding: 10px;
+        /*height: 100%*/
+        max-height: 400px;
+        /*overflow-y: scroll;*/
+      }
+
+      .speech-bubble:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 75px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-left-color: #d1f8f7;
+        border-right: 0;
+        margin-top: -20px;
+        margin-right: -20px;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /*height: 60px; 
+        line-height: 60px; */
+        background-color: #f5f5f5;
+      }
+         #stopRecord {
+         background-color: red; /* Green */
+         border-width: medium;
+         border-color: black;
+         color: white;
+         padding: 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         max-width: 50%;
+         max-height: 15%;
+         border-radius: 50%;
+         left: 100px;
+         right: 100px;
+         position: relative;
+         }
+         #record {
+         background-color: green; /* Green */
+         border-width: medium;
+         border-color: black;
+         color: white;
+         padding: 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         max-width: 50%;
+         max-height: 15%;
+         border-radius: 50%;
+         left: 100px;
+         right: 100px;
+         position: relative;
+         }
+         h2 {
+         left: 100px;
+         position: relative;
+         }
+         #recordedAudio {
+         left: 100px;
+         right: 100px;
+         position: relative;
+         }
+    </style>
+    <script type="text/javascript" src="NoSleep.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="open-iconic-bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header class="bg-dark blog-header bg-dark navbar-dark">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+    <!-- <nav class="nav d-flex justify-content-between"> -->
+      <div class="col-4">
+        <a class="p-2 text-muted" href="index.html">  <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> </a>
+      </div>
+      <div class="col-4 text-center">
+        <a class="blog-header-logo navbar-brand" href="#">Talk with me!</a>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+      </div>
+    </div>
+    <!-- </nav> -->
+  </header>
+
+<!--     <nav class="navbar navbar-dark bg-dark justify-content-center">
+         <a href="index.html"> <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> </a>  <a class="navbar-brand">Talk with me!</a>
+    </nav> -->
+<div class="container-fluid">
+    <!-- <div class="row" style="height: 300px"> -->
+    <div class="row" >
+        <div class="col-8">
+          <!-- <div class="jumbotron"> -->
+            <div class="speech-bubble">
+            <!-- <h1 class="display-4">Hello, world!</h1> -->
+            <p >This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <!-- <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+          </div>
+        </div>
+        <div class="col-3">
+            <img id="bunny" src="bunny.png" style="width: 80%; margin-top: 30pt" />
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+    <div class="row footer" style="height: 100px">
+      <div class="col-4">
+        <a href="index.html"> <button type="button" class="btn btn-info col-12">
+          <!-- <span class="oi oi-arrow-thick-left"></span> -->
+          <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> 
+          <!-- &#11013; -->
+        End Session</button> </a>
+      </div>
+      <div class="col-4">
+        <button id="playpause" type="button" class="btn btn-success col-12" onclick="window.app.playPause();">Start </button>
+      </div>
+      <div class="col-4">
+
+        <button type="button" class="btn btn-info col-12" data-toggle="modal" data-target="#exampleModalLong">Need Help?</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- <div class="row">
+    <h2>Record</h2>
+    <p>
+        <button id=record onclick="window.audio.play(); window.app.main();">Start</button>
+        <button id=stopRecord onclick="window.app.close();">Stop</button>
+    </p>
+    <p>
+        <audio id=recordedAudio></audio>
+    </p>
+    <h2>Transcript</h2>
+    <h2 id="loading" style="display:none;">Loading application, please wait...</h2>
+    <h2 id="listening" style="display:none;">Listening...</h2>
+    <div id="transcript">
+    </div>
+  </div> -->
+
+<script>
+    var noSleep = new NoSleep();
+    window.audio = new Audio();
+    
+    window.app = {
+        socket: null,
+        mediaTrack: null,
+        counter: 0,
+        bufferSize: 4096,
+        socketOpen: false,
+        audioChunks: [],
+        playQueue: [],
+        playing: false,
+        playPause: function () {
+          if (window.app.playing == false) {
+            window.app.playing = true;
+            console.log("starting to play");
+            // window.app.main();
+            window.audio.play();
+            document.getElementById('playpause').innerText = "Pause";
+            document.getElementById('playpause').className = "btn btn-warning col-12"
+            noSleep.enable();
+            // if connection successful
+            document.getElementById('bunny').src="bunny-listening.gif";
+          } 
+          else {
+            console.log("pausing");
+            window.app.playing = false;
+            // window.app.close();
+            document.getElementById('playpause').innerText = "Start";
+            document.getElementById('playpause').className = "btn btn-success col-12"
+            noSleep.disable();
+            // if connection successful
+            document.getElementById('bunny').src="bunny.png";
+          }
+
+        },
+        main: function() {
+            document.getElementById('loading').style = "display:block;"
+            var room = "{{ story_id }}";
+            var room = "26";
+            var protocol = location.protocol == "https:" ? "wss://" : "ws://"
+            var chatSocket = protocol + window.location.host + '/ws/chat/' + room.toString() + '/';
+            var chatSocket = protocol + "talkwithme.herokuapp.com" + '/ws/chat/' + room.toString() + '/';
+            this.socket = new WebSocket(chatSocket);
+            this.socket.addEventListener("open", this.onSocketOpen.bind(this));
+            this.socket.addEventListener("message", this.onSocketMessage.bind(this));
+
+        },
+        onSocketOpen: function(event) {
+            window.paused = false
+            window.recorder = this.initRecorder();
+            console.log("onSocketOpen");
+
+            this.socketOpen = true;
+            document.getElementById('loading').style = "display:none;"
+
+            
+        },
+        onSocketMessage: function(event) {
+            console.log("onSocketMessage")
+            console.log("Message", event);
+            if (typeof(event.data) === "string") {
+                if (event.data == "listening") {
+                    document.getElementById('listening').style = "display:block;"
+                    }
+                    else {
+                        document.getElementById('listening').style = "display:none;"
+                        var oldInner = document.getElementById("transcript").innerHTML
+                        document.getElementById("transcript").innerHTML = "<p>" + event.data + "</p>" + oldInner;
+                    }
+                } 
+            else {
+                console.log("new audio received")
+                window.app.playQueue.push(event)
+                console.log(window.app.playQueue.length)
+                if (window.app.playQueue.length == 1) {
+                    console.log("playing response")
+                    window.app.playResponse()
+                }
+            }
+        },
+        initRecorder: function() {
+                return navigator.mediaDevices.getUserMedia({
+                    "audio": true,
+                    "video": false
+                }).then((stream) => {
+                    var context = new(window.AudioContext || window.webkitAudioContext);
+                    // send metadata on audio stream to backend
+                    console.log("sending config to server")
+                    this.socket.send(JSON.stringify({
+                        rate: context.sampleRate,
+                        language: "en-US",
+                        format: "LINEAR16"
+                    }));
+                    // Caputure mic audio data into a stream
+                    var audioInput = context.createMediaStreamSource(stream);
+                    // only record mono audio w/a buffer of 2048 bits per function call
+                    var recorder = context.createScriptProcessor(this.bufferSize, 1, 1);
+                    // specify the processing function
+                    recorder.onaudioprocess = this.audioProcess.bind(this);
+                    // connect stream to our recorder
+                    audioInput.connect(recorder);
+                    // connect recorder to previous destination
+                    recorder.connect(context.destination);
+                    // store media track
+                    this.mediaTrack = stream.getTracks()[0];
+                });
+        },
+        float32To16BitPCM: function(float32Arr) {
+            var pcm16bit = new Int16Array(float32Arr.length);
+            for (var i = 0; i < float32Arr.length; ++i) {
+                // force number in [-1,1]
+                var s = Math.max(-1, Math.min(1, float32Arr[i]));
+                /**
+                 * convert 32 bit float to 16 bit int pcm audio
+                 * 0x8000 = minimum int16 value, 0x7fff = maximum int16 value
+                 */
+                pcm16bit[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+            }
+            return pcm16bit;
+        },
+        audioProcess: function(event) {
+            // only 1 channel as specified above.....
+            var float32Audio = event.inputBuffer.getChannelData(0) || new Float32Array(this.bufferSize);
+            var pcm16Audio = this.float32To16BitPCM(float32Audio);
+                this.socket.send(pcm16Audio.buffer);
+        },
+        close: function() {
+            this.mediaTrack.stop()
+            this.socket.close()
+            console.log("closed connection");
+            this.socketOpen = false;
+            document.getElementById('listening').style = "display:none;"
+            noSleep.disable();
+        },
+        playResponse: function() {
+            var self = this;
+            console.log('playResponse fired - window paused?')
+            console.log(window.paused)
+            event = window.app.playQueue[0]
+            console.log("event")
+            console.log(event)
+            var audioUrl = URL.createObjectURL(event.data);
+            window.audio = new Audio();
+
+            audio.src = audioUrl
+            audio.onended = function() {
+                console.log(window.app.playQueue)
+                if (window.app.playQueue.length > 1) {
+                    console.log('playing next response - window paused?');
+                    console.log(window.paused)
+                    console.log('deleting first from queue')
+                    window.app.playQueue.shift();
+                    console.log(window.app.playQueue)
+                    window.app.playResponse()
+                } else {
+                    console.log("queue empty");
+                    window.app.playQueue.shift();
+                    if (window.paused) {
+                        self.socket.send("unmute");
+                    }
+                    window.paused = false;
+                }
+            }
+            if (!window.paused) {
+                this.socket.send("mute");
+            }
+            window.paused = true;
+            var playPromise = window.audio.play();
+            if (playPromise !== undefined) {
+              playPromise.then(function() {
+                // Automatic playback started!
+                console.log("playing audio")
+              }).catch(function(error) {
+                // Automatic playback failed.
+                console.log(error)
+                // alert("Your browser is unable to automatically play audio. Please enable auto-play and refresh this page or change to a supported device")
+              });
+            }
+
+          }
+        };
+</script>
+</body>
+</html>
+
