@@ -39,8 +39,10 @@
             <div class="speech-bubble">
             <!-- <h1 class="display-4">Hello, world!</h1> -->
             <p id="bunny-starter">Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page.</p>
-            <p id="questions">
-            </p>
+            <div class="container-fluid" style="overflow-y: scroll;">
+              <p id="questions">
+              </p>
+            </div>
             <!-- <hr class="my-4">
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
             <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
@@ -78,7 +80,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="transcript">
         ...
       </div>
       <div class="modal-footer">
@@ -123,8 +125,10 @@
             console.log("starting to play");
             // window.app.main();
             window.audio.play();
+            window.app.main()
+
             document.getElementById('playpause').innerText = "Pause";
-            document.getElementById('playpause').className = "btn btn-warning col-12"
+            document.getElementById('playpause').className = "btn btn-warning col-12";
             document.getElementById('bunny-starter').innerText = "Please keep reading. I want to hear what happens next in the story";
             noSleep.enable();
             // if connection successful
@@ -132,6 +136,8 @@
           } 
           else {
             console.log("pausing");
+            window.app.close();
+            
             window.app.playing = false;
             // window.app.close();
             document.getElementById('playpause').innerText = "Start";
@@ -144,11 +150,12 @@
 
         },
         main: function() {
-            document.getElementById('loading').style = "display:block;"
-            var room = "{{ story_id }}";
+            // document.getElementById('loading').style = "display:block;"
+            // var room = "{{ story_id }}";
+            document.getElementById('bunny-starter').innerText = "Connecting...";
             var room = "26";
             var protocol = location.protocol == "https:" ? "wss://" : "ws://"
-            var chatSocket = protocol + window.location.host + '/ws/chat/' + room.toString() + '/';
+            // var chatSocket = protocol + window.location.host + '/ws/chat/' + room.toString() + '/';
             var chatSocket = protocol + "talkwithme.herokuapp.com" + '/ws/chat/' + room.toString() + '/';
             this.socket = new WebSocket(chatSocket);
             this.socket.addEventListener("open", this.onSocketOpen.bind(this));
@@ -161,8 +168,8 @@
             console.log("onSocketOpen");
 
             this.socketOpen = true;
-            document.getElementById('loading').style = "display:none;"
-
+            // document.getElementById('loading').style = "display:none;"
+            document.getElementById('bunny-starter').innerText = "Please keep reading. I want to hear what happens next in the story";
             
         },
         onSocketMessage: function(event) {
@@ -170,10 +177,10 @@
             console.log("Message", event);
             if (typeof(event.data) === "string") {
                 if (event.data == "listening") {
-                    document.getElementById('listening').style = "display:block;"
+                    // document.getElementById('listening').style = "display:block;"
                     }
                     else {
-                        document.getElementById('listening').style = "display:none;"
+                        // document.getElementById('listening').style = "display:none;"
                         var oldInner = document.getElementById("transcript").innerHTML
                         document.getElementById("transcript").innerHTML = "<p>" + event.data + "</p>" + oldInner;
                     }
@@ -239,7 +246,7 @@
             this.socket.close()
             console.log("closed connection");
             this.socketOpen = false;
-            document.getElementById('listening').style = "display:none;"
+            // document.getElementById('listening').style = "display:none;"
             noSleep.disable();
         },
         playResponse: function() {
