@@ -4,92 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Talk with me</title>
-    <style>
-      .speech-bubble {
-        position: relative;
-        background: #d1f8f7;
-        border-radius: .4em;
-        margin: 15px;
-        padding: 10px;
-        /*height: 100%*/
-        max-height: 400px;
-        /*overflow-y: scroll;*/
-      }
 
-      .speech-bubble:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 75px;
-        width: 0;
-        height: 0;
-        border: 20px solid transparent;
-        border-left-color: #d1f8f7;
-        border-right: 0;
-        margin-top: -20px;
-        margin-right: -20px;
-      }
-
-      .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        /*height: 60px; 
-        line-height: 60px; */
-        background-color: #f5f5f5;
-      }
-         #stopRecord {
-         background-color: red; /* Green */
-         border-width: medium;
-         border-color: black;
-         color: white;
-         padding: 20px;
-         text-align: center;
-         text-decoration: none;
-         display: inline-block;
-         font-size: 16px;
-         margin: 4px 2px;
-         cursor: pointer;
-         max-width: 50%;
-         max-height: 15%;
-         border-radius: 50%;
-         left: 100px;
-         right: 100px;
-         position: relative;
-         }
-         #record {
-         background-color: green; /* Green */
-         border-width: medium;
-         border-color: black;
-         color: white;
-         padding: 20px;
-         text-align: center;
-         text-decoration: none;
-         display: inline-block;
-         font-size: 16px;
-         margin: 4px 2px;
-         cursor: pointer;
-         max-width: 50%;
-         max-height: 15%;
-         border-radius: 50%;
-         left: 100px;
-         right: 100px;
-         position: relative;
-         }
-         h2 {
-         left: 100px;
-         position: relative;
-         }
-         #recordedAudio {
-         left: 100px;
-         right: 100px;
-         position: relative;
-         }
-    </style>
     <script type="text/javascript" src="js/NoSleep.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="css/open-iconic-bootstrap.min.css" rel="stylesheet">
 </head>
@@ -119,7 +38,9 @@
           <!-- <div class="jumbotron"> -->
             <div class="speech-bubble">
             <!-- <h1 class="display-4">Hello, world!</h1> -->
-            <p >This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p id="bunny-starter">Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page.</p>
+            <p id="questions">
+            </p>
             <!-- <hr class="my-4">
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
             <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
@@ -133,7 +54,7 @@
     </div>
     <div class="row footer" style="height: 100px">
       <div class="col-4">
-        <a href="index.html"> <button type="button" class="btn btn-info col-12">
+        <a href="index.html"> <button type="button" class="btn btn-dark col-12">
           <!-- <span class="oi oi-arrow-thick-left"></span> -->
           <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> 
           <!-- &#11013; -->
@@ -205,6 +126,7 @@
             window.audio.play();
             document.getElementById('playpause').innerText = "Pause";
             document.getElementById('playpause').className = "btn btn-warning col-12"
+            document.getElementById('bunny-starter').innerText = "Please keep reading. I want to hear what happens next in the story";
             noSleep.enable();
             // if connection successful
             document.getElementById('bunny').src="bunny-listening.gif";
@@ -215,6 +137,7 @@
             // window.app.close();
             document.getElementById('playpause').innerText = "Start";
             document.getElementById('playpause').className = "btn btn-success col-12"
+            document.getElementById('bunny-starter').innerText = "Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page.";
             noSleep.disable();
             // if connection successful
             document.getElementById('bunny').src="bunny.png";
