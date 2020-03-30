@@ -38,7 +38,7 @@
           <!-- <div class="jumbotron"> -->
             <div class="speech-bubble">
             <!-- <h1 class="display-4">Hello, world!</h1> -->
-            <p id="bunny-starter">Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page.</p>
+            <p id="bunny-starter">Hi, I'm Floppy and I love to read. Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page. Now, let's read!</p>
             <div class="container-fluid" style="overflow-y: scroll;">
               <p id="questions">
               </p>
@@ -123,9 +123,6 @@
           if (window.app.playing == false) {
             window.app.playing = true;
             console.log("starting to play");
-            // window.app.main();
-            window.audio.play();
-            window.app.main()
 
             document.getElementById('playpause').innerText = "Pause";
             document.getElementById('playpause').className = "btn btn-warning col-12";
@@ -133,19 +130,21 @@
             noSleep.enable();
             // if connection successful
             document.getElementById('bunny').src="bunny-listening.gif";
+            window.audio.play();
+            window.app.main()
           } 
           else {
-            console.log("pausing");
-            window.app.close();
-            
+            console.log("pausing");            
             window.app.playing = false;
             // window.app.close();
             document.getElementById('playpause').innerText = "Start";
             document.getElementById('playpause').className = "btn btn-success col-12"
-            document.getElementById('bunny-starter').innerText = "Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page.";
+            document.getElementById('bunny-starter').innerText = "Hi, I'm Floppy and I love to read. Click 'Start' and I'll listen in as you read this book out loud. I may also ask a question when you reach the end of a page. Now, let's read!";
             noSleep.disable();
             // if connection successful
             document.getElementById('bunny').src="bunny.png";
+            
+            window.app.close();
           }
 
         },
