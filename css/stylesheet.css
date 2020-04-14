@@ -1,3 +1,12 @@
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+
 .speech-bubble {
   position: relative;
   background: #d1f8f7;
@@ -78,10 +87,10 @@
      right: 100px;
      position: relative;
  }
- h2 {
+ /*h2 {
      left: 100px;
      position: relative;
- }
+ }*/
  #recordedAudio {
      left: 100px;
      right: 100px;

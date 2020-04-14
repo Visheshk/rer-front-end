@@ -28,273 +28,49 @@
       <!-- </nav> -->
     </header>
 
-<div class="container-fluid">
-  <div class="row" >
-    <div class="col-12" style="width: 18rem;">
-      <!-- <div class="speech-bubble"> -->
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">Choose the book you'd like to read aloud with your child.</p>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="col-2">
-      <img id="bunny-peek" src="bunny-peek.png" style="width: 80%;" />
-    </div> -->
-    <!-- <div class="col-3">
-        <img id="bunny" src="bunny.png" style="width: 80%; margin-top: 30pt" />
-    </div>
-    <div class="col-1">
-    </div> -->
+  <div class="jumbotron">
+    <h1 class="display-4 justify-content-center">Ready to Read</h1>
+    <p class="lead">Talk more, play more, build your child's reading skills</p>
+    <!-- <hr class="my-4"> -->
+    <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
   </div>
 
-        <!-- <div > -->
-  <div class="row" style="margin-bottom: 15px">
-    <div class = "col-6">
-      <div class="list-group">
-        <a href="b1.html" class="list-group-item list-group-item-action">
-          <!-- <div class="d-flex w-100 justify-content-between"> -->
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <img src="b2.jpg" class="book-covers float-left"/>
-              </div>
-              <div class="col-md-6 col-sm-6">
-                <p><strong>Book 1</strong> How to Find An Elephant</p>
-              </div>
-            </div>
-            <!-- <h5 class="mb-1">How to Find an Elephant</h5> -->
-            
-          <!-- </div> -->
-          
-          <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> -->
-          <!-- <small>Donec id elit non mi porta.</small> -->
-        </a>
+  <div class="container">
+    <form id="userForm">
+      <div class="form-group">
+        <label for="name">What's your name?</label>
+        <input type="text" class="form-control" id="name" aria-describedby="formname" placeholder="Enter Your Name Here">
+        <!-- <small id="formname" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
-    </div>
-    <div class = "col-6">
-        <a href="b1.html" class="list-group-item list-group-item-action">
-          <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <img src="b3.jpg" class="book-covers float-left"/>
-              </div>
-              <div class="col-md-6 col-sm-6">
-                <p><strong>Book 2</strong> Ladybug Girl</p>
-              </div>
-            </div>
-          
-          <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> -->
-          <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
-        </a>
+      <div class="form-group">
+        <label for="studyId">Do you have a study ID?</label>
+        <input type="text" class="form-control" id="studyId" placeholder="Enter Study ID Here">
       </div>
-      <!-- </div> -->
-    </div>
-  <!-- </div> -->
-  <div class="row">
-    <div class = "col-6">
-      <div class="list-group">
-        <a href="b4.html" class="list-group-item list-group-item-action">
-          <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <img src="b4.jpg" class="book-covers float-left"/>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <p><strong>Book 3</strong> The Cow Who Climbed a Tree</p>
-            </div>
-          </div>
-          
-          <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> -->
-          <!-- <small>Donec id elit non mi porta.</small> -->
-        </a>
+      <div class="form-group">
+        <label for="childAge">How old is your child?</label>
+        <input type="number" class="form-control" id="childAge" placeholder="Enter Child's Age Here">
       </div>
-    </div>
-    <div class="col-6">
-      <a href="b1.html" class="list-group-item list-group-item-action">
-        <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <img src="b5.jpg" class="book-covers float-left"/>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <p><strong>Book 4</strong> The Rainbow Fish</p>
-          </div>
-        </div>
-      
-        
-        <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> -->
-        <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
-      </a>
-    </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Agree to grant permissions</label>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" />
+      </div>
+    </form>
   </div>
-</div>        
-<!-- <div class="row offscreen">
-    <h2>Record</h2>
-    <p>
-        <button id=record onclick="window.audio.play(); window.app.main();">Start</button>
-        <button id=stopRecord onclick="window.app.close();">Stop</button>
-    </p>
-    <p>
-        <audio id=recordedAudio></audio>
-    </p>
-    <h2>Transcript</h2>
-    <h2 id="loading" style="display:none;">Loading application, please wait...</h2>
-    <h2 id="listening" style="display:none;">Listening...</h2>
-    <div id="transcript">
-    </div>
-</div>
- -->
-<script>
-    var noSleep = new NoSleep();
-    window.audio = new Audio();
-    window.app = {
-            socket: null,
-            mediaTrack: null,
-            counter: 0,
-            bufferSize: 4096,
-            socketOpen: false,
-            audioChunks: [],
-            playQueue: [],
-            main: function() {
-                document.getElementById('loading').style = "display:block;"
-                var room = "{{ story_id }}";
-                var room = "26";
-                var protocol = location.protocol == "https:" ? "wss://" : "ws://"
-                var chatSocket = protocol + window.location.host + '/ws/chat/' + room.toString() + '/';
-                var chatSocket = protocol + "talkwithme.herokuapp.com" + '/ws/chat/' + room.toString() + '/';
-                this.socket = new WebSocket(chatSocket);
-                this.socket.addEventListener("open", this.onSocketOpen.bind(this));
-                this.socket.addEventListener("message", this.onSocketMessage.bind(this));
-                noSleep.enable();
-            },
-            onSocketOpen: function(event) {
-                window.paused = false
-                window.recorder = this.initRecorder();
-                console.log("onSocketOpen");
-                this.socketOpen = true;
-                document.getElementById('loading').style = "display:none;"
-            },
-            onSocketMessage: function(event) {
-                console.log("onSocketMessage")
-                console.log("Message", event);
-                if (typeof(event.data) === "string") {
-                    if (event.data == "listening") {
-                        document.getElementById('listening').style = "display:block;"
-                        }
-                        else {
-                            document.getElementById('listening').style = "display:none;"
-                            var oldInner = document.getElementById("transcript").innerHTML
-                            document.getElementById("transcript").innerHTML = "<p>" + event.data + "</p>" + oldInner;
-                        }
-                    } else {
-                        console.log("new audio received")
-                        window.app.playQueue.push(event)
-                        console.log(window.app.playQueue.length)
-                        if (window.app.playQueue.length == 1) {
-                            console.log("playing response")
-                            window.app.playResponse()
-                        }
-                    }
-                },
-                initRecorder: function() {
-                        return navigator.mediaDevices.getUserMedia({
-                            "audio": true,
-                            "video": false
-                        }).then((stream) => {
-                            var context = new(window.AudioContext || window.webkitAudioContext);
-                            // send metadata on audio stream to backend
-                            console.log("sending config to server")
-                            this.socket.send(JSON.stringify({
-                                rate: context.sampleRate,
-                                language: "en-US",
-                                format: "LINEAR16"
-                            }));
-                            // Caputure mic audio data into a stream
-                            var audioInput = context.createMediaStreamSource(stream);
-                            // only record mono audio w/a buffer of 2048 bits per function call
-                            var recorder = context.createScriptProcessor(this.bufferSize, 1, 1);
-                            // specify the processing function
-                            recorder.onaudioprocess = this.audioProcess.bind(this);
-                            // connect stream to our recorder
-                            audioInput.connect(recorder);
-                            // connect recorder to previous destination
-                            recorder.connect(context.destination);
-                            // store media track
-                            this.mediaTrack = stream.getTracks()[0];
-                        });
-                    },
-                    float32To16BitPCM: function(float32Arr) {
-                        var pcm16bit = new Int16Array(float32Arr.length);
-                        for (var i = 0; i < float32Arr.length; ++i) {
-                            // force number in [-1,1]
-                            var s = Math.max(-1, Math.min(1, float32Arr[i]));
-                            /**
-                             * convert 32 bit float to 16 bit int pcm audio
-                             * 0x8000 = minimum int16 value, 0x7fff = maximum int16 value
-                             */
-                            pcm16bit[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
-                        }
-                        return pcm16bit;
-                    },
-                    audioProcess: function(event) {
-                        // only 1 channel as specified above.....
-                        var float32Audio = event.inputBuffer.getChannelData(0) || new Float32Array(this.bufferSize);
-                        var pcm16Audio = this.float32To16BitPCM(float32Audio);
-                            this.socket.send(pcm16Audio.buffer);
-                    },
-                    close: function() {
-                        this.mediaTrack.stop()
-                        this.socket.close()
-                        console.log("closed connection");
-                        this.socketOpen = false;
-                        document.getElementById('listening').style = "display:none;"
-                        noSleep.disable();
-                    },
-                    playResponse: function() {
-                        var self = this;
-                        console.log('playResponse fired - window paused?')
-                        console.log(window.paused)
-                        event = window.app.playQueue[0]
-                        console.log("event")
-                        console.log(event)
-                        var audioUrl = URL.createObjectURL(event.data);
-                        window.audio = new Audio();
-
-                        audio.src = audioUrl
-                        audio.onended = function() {
-                            console.log(window.app.playQueue)
-                            if (window.app.playQueue.length > 1) {
-                                console.log('playing next response - window paused?');
-                                console.log(window.paused)
-                                console.log('deleting first from queue')
-                                window.app.playQueue.shift();
-                                console.log(window.app.playQueue)
-                                window.app.playResponse()
-                            } else {
-                                console.log("queue empty");
-                                window.app.playQueue.shift();
-                                if (window.paused) {
-                                    self.socket.send("unmute");
-                                }
-                                window.paused = false;
-                            }
-                        }
-                        if (!window.paused) {
-                            this.socket.send("mute");
-                        }
-                        window.paused = true;
-                        var playPromise = window.audio.play();
-                        if (playPromise !== undefined) {
-                          playPromise.then(function() {
-                            // Automatic playback started!
-                            console.log("playing audio")
-                          }).catch(function(error) {
-                            // Automatic playback failed.
-                            console.log(error)
-                            // alert("Your browser is unable to automatically play audio. Please enable auto-play and refresh this page or change to a supported device")
-                          });
-                        }
-
-                    }
-            };
-</script>
 </body>
+
+<script>
+function logSubmit(event) {
+  event.preventDefault();
+  console.log(event.target.name.value);
+  window.location.href="/start.html";
+}
+
+const form = document.getElementById('userForm');
+form.addEventListener('submit', logSubmit);
+
+</script>
 </html>
 

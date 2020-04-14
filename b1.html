@@ -17,7 +17,7 @@
     <div class="row flex-nowrap justify-content-between align-items-center">
     <!-- <nav class="nav d-flex justify-content-between"> -->
       <div class="col-4">
-        <a class="p-2 text-muted" href="index.html">  <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> </a>
+        <a class="p-2 text-muted" href="booklist.html">  <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> </a>
       </div>
       <div class="col-4 text-center">
         <a class="blog-header-logo navbar-brand" href="#">Talk with me!</a>
@@ -55,7 +55,7 @@
     </div>
     <div class="row footer" style="height: 100px">
       <div class="col-4">
-        <a href="index.html"> <button type="button" class="btn btn-dark col-12">
+        <a href="booklist.html"> <button type="button" class="btn btn-dark col-12">
           <!-- <span class="oi oi-arrow-thick-left"></span> -->
           <span class="oi oi-arrow-thick-left" title="oi-arrow-thick-left" aria-hidden="true"></span> 
           <!-- &#11013; -->
@@ -90,21 +90,6 @@
     </div>
   </div>
 </div>
-  <!-- <div class="row">
-    <h2>Record</h2>
-    <p>
-        <button id=record onclick="window.audio.play(); window.app.main();">Start</button>
-        <button id=stopRecord onclick="window.app.close();">Stop</button>
-    </p>
-    <p>
-        <audio id=recordedAudio></audio>
-    </p>
-    <h2>Transcript</h2>
-    <h2 id="loading" style="display:none;">Loading application, please wait...</h2>
-    <h2 id="listening" style="display:none;">Listening...</h2>
-    <div id="transcript">
-    </div>
-  </div> -->
 
 <script>
     var noSleep = new NoSleep();
@@ -241,8 +226,13 @@
                 this.socket.send(pcm16Audio.buffer);
         },
         close: function() {
-            this.mediaTrack.stop()
-            this.socket.close()
+            try{
+              this.mediaTrack.stop();
+            }
+            catch (e) {
+              console.log(e);
+            }
+            this.socket.close();
             console.log("closed connection");
             this.socketOpen = false;
             // document.getElementById('listening').style = "display:none;"
