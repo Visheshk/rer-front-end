@@ -73,8 +73,8 @@
 function logSubmit(event) {
   event.preventDefault();
   console.log(event.target.name.value);
-  console.log(window.location + "/start.html")
-  window.location.href="http://" + window.location.host + "/start.html";
+  console.log(window.location + "start.html")
+  window.location.href= window.location + "start.html";
 }
 
 const form = document.getElementById('userForm');
