@@ -7,6 +7,15 @@
     margin:0 auto;
 }
 
+.menuimages 
+{
+    max-height: 70pt;
+    /*object-fit: cover;*/
+    max-width: 50pt;
+    display: block;
+    margin: 10pt;
+}
+
 .speech-bubble {
   position: relative;
   background: #d1f8f7;
