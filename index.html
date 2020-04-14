@@ -75,12 +75,13 @@ function logSubmit(event) {
   event.preventDefault();
   console.log(event.target.name.value);
   console.log(window.location + "start.html")
-  if (window.location == "http://localhost:8000/index.html") {
-    window.location.href= "start.html";  
-  }
-  else {
-    window.location.href= window.location + "start.html";
-  }
+  document.location.href="start.html";
+  //  if (window.location == "/index.html"){
+  //   window.location.href= window.location + "start.html";
+  // }
+  // else {
+  //   window.location.href= "start.html";  
+  // }
 }
 
 const form = document.getElementById('userForm');
